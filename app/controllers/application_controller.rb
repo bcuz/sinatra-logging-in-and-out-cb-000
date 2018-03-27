@@ -20,35 +20,35 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/account'
 
-    # else
-    #   erb :error
-    #
+    else
+      erb :error
+
     end
 
   end
 
   get '/account' do
-    @user = User.find(session[:user_id])
-    # 'Welcome #{@user.username}'
+    @user = User.find_by_id(session[:user_id])
+    # binding.pry
     # not going straight the the page...
-      erb :account
-      # binding.pry
 
       # erb :account
       # binding.pry
-    # if !@user.nil?
-    #   # @user = User.find(session[:id])
-    #
-    # else
-    #   # thats what its asking for
-    #   erb :error
-    #
-    # end
+    if !@user.nil?
+      erb :account
+      # @user = User.find(session[:id])
+
+    else
+      # thats what its asking for
+      erb :error
+
+    end
 
   end
 
   get '/logout' do
-
+    session.clear
+    redirect '/'
   end
 
 

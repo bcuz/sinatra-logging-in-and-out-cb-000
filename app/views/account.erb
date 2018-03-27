@@ -7,7 +7,13 @@
   </head>
   <body id="page-top">
 
-    <%= "Welcome #{@user.username}" %>
-    <%= "Bal #{Helpers.current_user(session).balance}" %>
+    <h1><%= "Welcome #{@user.username}" %></h1>
+    <!--  passed but dont understand how it all works -->
+    <!--  dont really understand whats so great about the helper funcs -->
+    <!-- <h3><%= "Your Balance: #{Helpers.current_user(session).balance.to_f}" %></h3> -->
+    <h3><%= "Your Balance: #{@user.balance.to_f}" %></h3>
+
+    <a href="/logout">Log Out</a>
+
   </body>
 </html>
